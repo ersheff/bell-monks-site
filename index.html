@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/htmx.org@2.0.2"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <title>Bell Monks</title>
+</head>
+
+<body>
+  <header>
+    <h1>Bell Monks</h1>
+  </header>
+  <div class="discography" x-data="{ 
+    pIndex: 0,
+    players: ['sun', 'brocades', 'big-bay', 'waves', 'lullabies'],
+    swapDiscs(n) {
+      const discographyContainer = this.$refs.discographyContainer;
+      discographyContainer.classList.remove('right', 'left');
+      discographyContainer.classList.add(n === 1 ? 'right' : 'left');
+      this.pIndex = this.pIndex + n;
+      if (this.pIndex < 0) this.pIndex = this.players.length - 1;
+      else if (this.pIndex >= this.players.length) this.pIndex = 0;
+      discographyContainer.setAttribute('hx-get', `players/${this.players[this.pIndex]}.html`);
+      htmx.process(discographyContainer);
+    }
+    }">
+    <svg class="discography-buttons" viewBox="0 0 20 30">
+      <polygon points="0,15 20,0 20,30" x-on:click="swapDiscs(-1)" />
+    </svg>
+    <div id="discography-container" x-ref="discographyContainer" hx-trigger="load" hx-get="players/sun.html"
+      hx-swap="swap:0.3s settle:0.3s"></div>
+    <svg class="discography-buttons right-button" viewBox="0 0 20 30">
+      <polygon points="0,0 20,15 0,30" x-on:click="swapDiscs(1)" />
+    </svg>
+  </div>
+
+  <nav>
+    <ul>
+      <li><a href="https://bellmonks.bandcamp.com/" target="_blank">Bandcamp</a></li>
+      <li><a href="https://soundcloud.com/bellmonks" target="_blank">Soundcloud</a></li>
+      <li><a href="https://waysideandwoodlandrecordings.bandcamp.com/" target="_blank">Wayside & Woodland</a></li>
+      <li><a href="https://www.instagram.com/bellmonks/" target="_blank">Instagram</a></li>
+      <li><a href="https://www.youtube.com/@bellmonks" target="_blank">YouTube</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="recent-news">
+      <h2>Recent News</h2>
+      <article>
+        <h3>1/1/2024</h3>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum id labore corporis nostrum rerum est,
+          reiciendis
+          veritatis nesciunt tempora accusamus!</p>
+      </article>
+      <article>
+        <h3>1/1/2024</h3>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum id labore corporis nostrum rerum est,
+          reiciendis
+          veritatis nesciunt tempora accusamus!</p>
+      </article>
+      <article>
+        <h3>1/1/2024</h3>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum id labore corporis nostrum rerum est,
+          reiciendis
+          veritatis nesciunt tempora accusamus!</p>
+      </article>
+      <article></article>
+    </section>
+    <section>
+      <input type=" text" placeholder="Mailing List">
+      <button>Join</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Bell Monks</p>
+  </footer>
+
+  <script>
+
+  </script>
+
+</body>
+
+</html>
