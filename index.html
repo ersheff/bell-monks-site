@@ -16,7 +16,7 @@
   </header>
   <div class="discography" x-data="{ 
     pIndex: 0,
-    players: ['sun', 'brocades', 'big-bay', 'waves', 'lullabies'],
+    players: ['snow', 'sun', 'brocades', 'big-bay', 'waves', 'lullabies'],
     swapDiscs(n) {
       const discographyContainer = this.$refs.discographyContainer;
       discographyContainer.classList.remove('right', 'left');
@@ -31,7 +31,7 @@
     <svg class="discography-buttons" viewBox="0 0 20 30">
       <polygon points="0,15 20,0 20,30" x-on:click="swapDiscs(-1)" />
     </svg>
-    <div id="discography-container" x-ref="discographyContainer" hx-trigger="load" hx-get="players/sun.html"
+    <div id="discography-container" x-ref="discographyContainer" hx-trigger="load" hx-get="players/snow.html"
       hx-swap="swap:0.3s settle:0.3s"></div>
     <svg class="discography-buttons right-button" viewBox="0 0 20 30">
       <polygon points="0,0 20,15 0,30" x-on:click="swapDiscs(1)" />
