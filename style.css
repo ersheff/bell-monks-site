@@ -32,7 +32,7 @@ header {
   background-color: var(--dk-grey);
   display: flex;
   justify-content: center;
-  padding: 40px 0;
+  height: 400px;
 }
 
 .discography-container {
@@ -175,6 +175,9 @@ footer {
 }
 
 @media (max-width: 800px) {
+  .discography {
+    height: 340px;
+  }
   #disc-container {
     width: 300px;
   }
@@ -195,6 +198,9 @@ footer {
 }
 
 @media (max-width: 480px) {
+  .discography {
+    height: 280px;
+  }
   #disc-container {
     width: 250px;
   }
