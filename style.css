@@ -9,7 +9,7 @@
 * {
   box-sizing: border-box;
   margin: 0;
-  font-family: "Arial";
+  font-family: "Helvetica Neue", sans-serif;
 }
 
 body {
@@ -23,46 +23,60 @@ img {
 header {
   background-color: var(--dk-blue);
   color: var(--lt-grey);
-  padding: 1rem;
   text-align: center;
   font-size: 2rem;
+  padding: 20px;
 }
 
 .discography {
   background-color: var(--dk-grey);
-  height: 400px;
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.discography-container {
+  background-color: var(--dk-grey);
   display: flex;
   justify-content: space-around;
   align-items: center;
+  width: 100%;
+  max-width: 800px;
 }
 
-#discography-container {
+#disc-container {
   width: 350px;
   transition: 0.3s;
 }
 
-#discography-container.htmx-swapping {
+#disc-container.htmx-swapping {
   opacity: 0;
 }
 
-#discography-container.htmx-settling {
+#disc-container.htmx-settling {
   opacity: 0;
 }
 
-#discography-container.left.htmx-swapping {
+#disc-container.left.htmx-swapping {
   translate: 100px;
 }
 
-#discography-container.left.htmx-settling {
+#disc-container.left.htmx-settling {
   translate: -100px;
 }
 
-#discography-container.right.htmx-swapping {
+#dis-container.right.htmx-swapping {
   translate: -100px;
 }
 
-#discography-container.right.htmx-settling {
+#disc-container.right.htmx-settling {
   translate: 100px;
+}
+
+.disc {
+  border: 0;
+  width: 350px;
+  height: 350px;
 }
 
 .discography-buttons {
@@ -108,23 +122,94 @@ main {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 1rem;
+  padding: 40px;
+  gap: 40px;
 
-  section {
+  article {
     max-width: 80ch;
   }
 
-  .recent-news {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+  .text-article {
+    text-align: center;
+    p {
+      margin: 0.2rem;
+    }
+    a {
+      color: var(--lt-grey);
+      text-decoration: none;
+
+      &:hover {
+        color: #aab6ff;
+      }
+    }
   }
+}
+
+.video-container {
+  display: flex;
+  justify-content: center;
+}
+
+.video-player {
+  width: 560px;
+  height: 315px;
 }
 
 footer {
   background-color: var(--dk-grey);
   color: var(--lt-grey);
+  font-size: 0.8rem;
   text-align: center;
-  padding: 1rem;
-  height: 100px;
+  padding: 20px;
+  p {
+    margin: 0.2rem;
+  }
+  a {
+    color: var(--lt-grey);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--blue);
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  #disc-container {
+    width: 300px;
+  }
+  .disc {
+    width: 300px;
+    height: 300px;
+  }
+  nav {
+    ul {
+      font-size: 0.9rem;
+      gap: 0.5rem;
+    }
+  }
+  .video-player {
+    width: 400px;
+    height: 225px;
+  }
+}
+
+@media (max-width: 480px) {
+  #disc-container {
+    width: 250px;
+  }
+  .disc {
+    width: 250px;
+    height: 250px;
+  }
+  nav {
+    ul {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  .video-player {
+    width: 320px;
+    height: 180px;
+  }
 }
