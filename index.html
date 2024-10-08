@@ -5,77 +5,100 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="discography.css">
   <script src="https://unpkg.com/htmx.org@2.0.2"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <title>Bell Monks</title>
 </head>
 
 <body>
+
   <header>
-    <h1>Bell Monks</h1>
+
+    <div class="spacer"></div>
+
+    <div class="banner">
+      <div class="band-name">
+        <h1>Bell<br>Monks</h1>
+      </div>
+      <div class="banner-background"></div>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="https://bellmonks.bandcamp.com/music" target="_blank">Bandcamp</a></li>
+        <li><a href="https://www.instagram.com/bellmonks/" target="_blank">Instagram</a></li>
+        <li><a href="https://waysideandwoodlandrecordings.bandcamp.com/" target="_blank">Wayside & Woodland</a></li>
+        <li><a href="https://music.apple.com/us/artist/bell-monks/1086846176" target="_blank">Apple Music</a></li>
+        <li><a href="https://open.spotify.com/artist/2zHofahHwrgLBUixMzYHqX?si=ncemdSN7THG-qA3i4BcbIQ"
+            target="_blank">Spotify</a></li>
+      </ul>
+    </nav>
+
   </header>
-  <div class="discography" x-data="{ 
-    pIndex: 0,
-    players: ['snow', 'sun', 'brocades', 'big-bay', 'waves', 'lullabies'],
-    swapDiscs(n) {
-      const discContainer = this.$refs.discContainer;
-      discContainer.classList.remove('right', 'left');
-      discContainer.classList.add(n === 1 ? 'right' : 'left');
-      this.pIndex = this.pIndex + n;
-      if (this.pIndex < 0) this.pIndex = this.players.length - 1;
-      else if (this.pIndex >= this.players.length) this.pIndex = 0;
-      discContainer.setAttribute('hx-get', `players/${this.players[this.pIndex]}.html`);
-      htmx.process(discContainer);
-    }
-    }">
-    <div class="discography-container">
-      <svg class="discography-buttons" viewBox="0 0 20 30">
-        <polygon points="0,15 20,0 20,30" x-on:click="swapDiscs(-1)" />
-      </svg>
-      <div id="disc-container" x-ref="discContainer" hx-trigger="load" hx-get="players/snow.html"
-        hx-swap="swap:0.3s settle:0.3s"></div>
-      <svg class="discography-buttons right-button" viewBox="0 0 20 30">
-        <polygon points="0,0 20,15 0,30" x-on:click="swapDiscs(1)" />
-      </svg>
+
+  <div class="discography-full">
+    <div class="discography-section">
+      <div class="discography-text">
+        <div>
+          <p>Our latest album:</p>
+          <p><a href="https://waysideandwoodlandrecordings.bandcamp.com/album/watching-the-snow-fall"
+              target="_blank">Watching The Snow Fall</a></p>
+          <p>Listen and pre-order now.</p>
+          <p>Releases November 8, 2024.</p>
+        </div>
+      </div>
+      <div class="discography-container" x-data="{
+        pIndex: 0,
+        players: ['snow', 'sun', 'brocades', 'big-bay', 'waves', 'lullabies'],
+        swapDiscs(n) {
+          const discContainer = this.$refs.discContainer;
+          discContainer.classList.remove('right', 'left');
+          discContainer.classList.add(n === 1 ? 'right' : 'left');
+          this.pIndex = this.pIndex + n;
+          if (this.pIndex < 0) this.pIndex = this.players.length - 1;
+          else if (this.pIndex >= this.players.length) this.pIndex = 0;
+          discContainer.setAttribute('hx-get', `players/${this.players[this.pIndex]}.html`);
+          htmx.process(discContainer);
+        }
+        }">
+        <svg class="discography-buttons" viewBox="0 0 20 30">
+          <polygon points="0,15 20,0 20,30" x-on:click="swapDiscs(-1)" />
+        </svg>
+        <div id="disc-container" x-ref="discContainer" hx-trigger="load" hx-get="players/snow.html"
+          hx-swap="swap:0.3s settle:0.3s"></div>
+        <svg class="discography-buttons right-button" viewBox="0 0 20 30">
+          <polygon points="0,0 20,15 0,30" x-on:click="swapDiscs(1)" />
+        </svg>
+      </div>
     </div>
   </div>
 
-  <nav>
-    <ul>
-      <li><a href="https://bellmonks.bandcamp.com/" target="_blank">Bandcamp</a></li>
-      <li><a href="https://soundcloud.com/bellmonks" target="_blank">Soundcloud</a></li>
-      <li><a href="https://waysideandwoodlandrecordings.bandcamp.com/" target="_blank">Wayside & Woodland</a></li>
-      <li><a href="https://www.instagram.com/bellmonks/" target="_blank">Instagram</a></li>
-      <li><a href="https://www.youtube.com/@bellmonks" target="_blank">YouTube</a></li>
-    </ul>
-  </nav>
 
-  <main>
-    <article class="text-article">
-      <p>Our latest album: <em><a href="https://waysideandwoodlandrecordings.bandcamp.com/album/watching-the-snow-fall"
-            target="_blank">Watching The Snow Fall</a></em></p>
-      <p>Listen and pre-order now</p>
-      <p>Releases November 8, 2024</p>
-    </article>
-    <article>
-      <div class="video-container">
-        <iframe class="video-player" src="https://www.youtube.com/embed/MEx5HqRtBPU?si=2hYX7YRRD9jyTX3Z"
-          title="YouTube video player" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-    </article>
-  </main>
+  <div class="bottom-section">
 
-  <footer>
-    <div>
+    <div class="video-container">
+      <iframe
+        src="https://www.youtube.com/embed/videoseries?si=3rOcJXVbkOwA3Qwm&amp;list=PL0Hfk3mwD1sz9h3BDBHd_tF7LOv683ml4"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+
+    <div class="acknowledgements-container">
       <p>Bell Monks is <a href="https://jeffherriott.com" target="_blank">Jeff Herriott</a> and <a
           href="https://www.ericsheffield.net" target="_blank">Eric
           Sheffield</a>.</p>
-      <p>The Bell Monks family includes Heidi E. Johnson, Trevor Saint, Anna Weisling, Ben Willis, and others.</p>
+      <p>The Bell Monks family includes <a href="https://www.blueartstudios.net/" target="_blank">Heidi E.
+          Johnson</a>,
+        Trevor Saint, <a href="https://aweisling.com/" target="_blank">Anna Weisling</a>, <a
+          href="http://www.benwillis.us/" target="_blank">Ben Willis</a>, and others.</p>
+      <p>Special thanks to <a href="https://www.linkedin.com/in/rachel-hellgren-6a165a111" target="_blank">Rachel
+          Hellgren</a> for help with site design.</p>
       <p>&copy; 2024 Bell Monks</p>
     </div>
-  </footer>
+
+  </div>
 
 </body>
 
