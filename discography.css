@@ -55,3 +55,19 @@
     }
   }
 }
+
+@media (max-width: 480px) {
+  #disc-container {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 420px) {
+  #disc-container {
+    display: none;
+  }
+  .discography-buttons {
+    display: none;
+  }
+}
