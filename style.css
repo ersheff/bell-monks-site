@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Lexend+Peta:wght@100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Peta:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap');
 
 :root {
   --dk-blue: #2b2f52;
@@ -7,6 +7,7 @@
   --dk-grey: #111;
   --grey: #575a7d;
   --lt-grey: #e2e3fb;
+  --quarter: 20px;
   --half: 40px;
   --full: 80px;
 }
@@ -18,7 +19,7 @@
 
 body {
   background-color: var(--dk-grey);
-  font-family: "Lexend Deca", sans-serif;
+  font-family: 'Lexend Deca', sans-serif;
   font-optical-sizing: auto;
   font-weight: 200;
   font-style: normal;
@@ -38,47 +39,28 @@ body {
   }
 }
 
-.spacer {
-  height: var(--half);
-}
-
 header {
   width: 100%;
+  text-align: center;
+  padding: var(--half);
 
-  .banner {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: var(--half);
-
-    .band-name {
-      justify-self: end;
-      padding-left: var(--half);
-    }
-
-    h1 {
-      font-family: "Lexend Peta", sans-serif;
-      font-weight: 100;
-      font-size: 4rem;
-    }
-
-    .banner-background {
-      background-image: url(images/snow-banner.webp);
-      background-position: top 20% right 50%;
-      background-size: 140%;
-    }
+  h1 {
+    font-family: 'Lexend Peta', sans-serif;
+    font-weight: 100;
+    font-size: 4rem;
   }
+}
 
-  nav {
-    ul {
-      height: var(--full);
-      padding: 0;
+nav {
+  ul {
+    height: var(--full);
+    padding: 0;
 
-      display: flex;
-      list-style-type: none;
-      justify-content: center;
-      align-items: center;
-      gap: var(--half);
-    }
+    display: flex;
+    list-style-type: none;
+    justify-content: center;
+    align-items: center;
+    gap: var(--half);
   }
 }
 
@@ -135,9 +117,10 @@ header {
 
 @media (max-width: 800px) {
   header {
+    padding: var(--half) var(--half) var(--quarter) var(--half);
     nav {
       ul {
-        gap: 5%;
+        gap: 4%;
       }
     }
   }
@@ -156,30 +139,15 @@ header {
 }
 
 @media (max-width: 640px) {
-  .spacer {
-    height: 10px;
-  }
   header {
-    .banner {
-      grid-template-columns: 1fr;
-      .band-name {
-        justify-self: center;
-        padding: 0;
-        h1 {
-          text-align: center;
-        }
-      }
-      .banner-background {
-        display: none;
-      }
-    }
-    nav {
-      ul {
-        flex-direction: column;
-        height: auto;
-        line-height: 2em;
-        padding: 10px;
-      }
+    padding: var(--quarter);
+  }
+  nav {
+    ul {
+      flex-direction: column;
+      height: auto;
+      line-height: 2em;
+      padding: 10px 0 0 0;
     }
   }
 }
