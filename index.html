@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="discography.css">
+  <link rel="preconnect" href="https://bandcamp.com">
+  <link rel="dns-prefetch" href="https://s4.bcbits.com">
+  <link rel="dns-prefetch" href="https://f4.bcbits.com">
   <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.3/dist/htmx.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <title>Bell Monks</title>
@@ -61,7 +64,10 @@
           <polygon points="0,15 20,0 20,30" x-on:click="swapDiscs(-1)" />
         </svg>
         <div id="disc-container" x-ref="discContainer" hx-trigger="load" hx-get="players/snow.html"
-          hx-swap="swap:0.3s settle:0.3s"></div>
+          hx-swap="swap:0.3s settle:0.3s" @htmx:before-request="showLoading = true"
+          @htmx:after-settle="showLoading = false">
+          <div class="disc-loading" :class="{'show': showLoading}"></div>
+        </div>
         <svg class="discography-buttons right-button" viewBox="0 0 20 30">
           <polygon points="0,0 20,15 0,30" x-on:click="swapDiscs(1)" />
         </svg>
