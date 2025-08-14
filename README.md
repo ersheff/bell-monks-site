@@ -5,6 +5,6 @@ A simple landing page for one of my bands, [Bell Monks](https://www.bellmonks.co
 Features:
 
 - **htmx** swaps HTML fragments for different albums using Bandcamp's embedded player, allowing smoother transitions and automatically stopping playback when an album is unloaded. This would not be possible otherwise, as Bandcamp does not provide a player API.
-- **Alpine.js** helps manage the state and behavior of htmx swaps.
+- **Alpine.js** helps manage the state and behavior of htmx swaps and contact form.
 
 Hosted with **GitHub Pages**.

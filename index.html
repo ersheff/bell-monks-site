@@ -18,9 +18,7 @@
 
   <header>
 
-    <div class="banner">
-      <h1>Bell Monks</h1>
-    </div>
+    <h1>Bell Monks</h1>
 
     <nav>
       <ul>
@@ -87,6 +85,74 @@
         referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
 
+    <h2>Contact</h2>
+
+    <div class="contact-container" x-data="{
+      sending: false,
+      sent: false,
+      failed: false,
+      async sendMessage(el) {
+        const formData = new FormData(el);
+        const contents = {
+          method: 'POST',
+          headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            name: formData.get('name'),
+            email: formData.get('email'),
+            message: formData.get('message'),
+            _subject: 'Contact from bellmonks.com'
+          })
+        }
+        try {
+          this.sending = true;
+          const success = await fetch('https://formsubmit.co/ajax/bellmonks@gmail.com', contents);
+          if (success.ok) {
+            this.sent = true;
+          } else {
+            console.log('Send failed.');
+            this.failed = true;
+          }
+        } catch (err) {
+          console.log(err);
+          this.failed = true;
+        }
+      }
+    }">
+      <form x-show="!sending" @submit.prevent="sendMessage($el)">
+        <div>
+          <label for="name">Name</label>
+          <input type="text" name="name" required>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" name="email" required>
+        </div>
+        <div>
+          <label for="message">Message</label>
+          <textarea name="message" rows="6"></textarea>
+        </div>
+        <button type="submit">Send</button>
+        <input type="text" name="_honey" style="display:none">
+      </form>
+
+      <div x-show="sending && !sent">
+        <p>Sending...</p>
+      </div>
+
+      <div x-show="failed">
+        <p>Sorry, your message failed to send. Please try again.</p>
+      </div>
+
+      <div class="send-acknowledgement" x-show="sent">
+        <p>Thanks for your message.</p>
+        <p>We'll get back to you soon.</p>
+      </div>
+
+    </div>
+
     <div class="acknowledgements-container">
       <p>Bell Monks is <a href="https://jeffherriott.com" target="_blank">Jeff Herriott</a> and <a
           href="https://www.ericsheffield.net" target="_blank">Eric
@@ -96,8 +162,8 @@
         Trevor Saint, <a href="https://aweisling.com/" target="_blank">Anna Weisling</a>, <a
           href="http://www.benwillis.us/" target="_blank">Ben Willis</a>, and others.</p>
       <p>Special thanks to <a href="https://www.linkedin.com/in/rachel-hellgren-6a165a111" target="_blank">Rachel
-          Hellgren</a> for help with site design.</p>
-      <p>&copy; 2024 Bell Monks</p>
+          Hellgren</a>.</p>
+      <p>&copy; 2025 Bell Monks</p>
     </div>
 
   </div>
